@@ -5,6 +5,6 @@ const router=Router()
 
 router.post('/paciente/registro',registrarPaciente)
 router.get('/paciente/listar',listarPacientes)
-router.get('/paciente/actualizar/:id',actualizarPaciente)
+router.put('/paciente/actualizar/:id',actualizarPaciente)
 
 export default router;
