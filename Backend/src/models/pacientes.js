@@ -37,10 +37,10 @@ const pacienteSchema=new Schema({
         trim:true
     },
     email:{
-        type:string,
+        type:String,
         require:true,
         trim:true
-    },
+    }
 
 
 })

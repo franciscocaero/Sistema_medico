@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Paciente from "../models/pacientes.js";
 
 
 const registrarPaciente=async(req,res)=>{
@@ -17,6 +18,10 @@ const registrarPaciente=async(req,res)=>{
     await nuevoPaciente.save()
     res
     .status(200)
-    .json({ msg: "Registro exitoso del paciente y correo enviado" });
+    .json({ msg: "Se acaba de registrar el nuevo paciente" });
 
+}
+
+export{
+    registrarPaciente
 }
