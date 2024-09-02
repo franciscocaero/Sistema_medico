@@ -21,7 +21,35 @@ const registrarPaciente=async(req,res)=>{
     .json({ msg: "Se acaba de registrar el nuevo paciente" });
 
 }
-
+const listarPacientes = async (req,res)=>{
+    if (req.pacienteBDD) {
+        const pacientes = await Paciente.find(req.pacienteBDD.id).populate('nombre apellido email')
+        res.status(200).json(pacientes)
+    }
+    else{
+        const pacientes = await Paciente.find({estado:true}).populate('nombre apellido email')
+        res.status(200).json(pacientes)
+    }
+}
+const actualizarPaciente = async (req, res) => {
+    const { id } = req.params;
+  
+    if (Object.values(req.body).includes(""))
+      return res
+        .status(400)
+        .json({ msg: "Lo sentimos, debes llenar todos los campos" });
+  
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res
+        .status(404)
+        .json({ msg: `Lo sentimos, no existe el paciente que buscó ${id}` });
+  
+    await Paciente.findByIdAndUpdate(req.params.id, req.body);
+  
+    res.status(200).json({ msg: "Actualización exitosa del paciente" });
+}
 export{
-    registrarPaciente
+    registrarPaciente,
+    listarPacientes,
+    actualizarPaciente
 }
