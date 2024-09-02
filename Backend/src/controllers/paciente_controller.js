@@ -18,7 +18,7 @@ const registrarPaciente=async(req,res)=>{
     await nuevoPaciente.save()
     res
     .status(200)
-    .json({ msg: "Se acaba de registrar el nuevo paciente" });
+    .json({ msg: "Paciente registrado" });
 
 }
 const listarPacientes = async (req,res)=>{
